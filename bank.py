@@ -58,8 +58,36 @@ class MainBankAccount():
         '''a function that allows to buy smth using a bank acc '''
         if cost > self._account_balance:
             return 'insufficient funds on your acc'
-        if cost <= self._account_balance:
+        elif cost <= self._account_balance:
             self._account_balance -= cost
+
+
+class SavingAccount(MainBankAccount):
+    '''Saving account'''
+    def __init__(self,saving_account_balance):#name, last_name, pesel, account_balance, saving_account_balance):
+        #super(MainBankAccount, self).__init__(name, last_name, pesel, account_balance)
+        self._saving_account_balance = saving_account_balance
+
+    @property
+    def saving_account_balance(self):
+        return self._saving_account_balance
+    @saving_account_balance.setter
+    def saving_account_balance(self, new_saving_account_balance):
+        self._saving_account_balance = new_saving_account_balance
+
+
+    def deposit_to_saving_account(self, money):
+        self._saving_account_balance += money
+    
+    def take_money_from_saving_account(self, money):
+        if money > self._saving_account_balance:
+            return 'insufficient funds on your acc'
+        elif money <= self._saving_account_balance:
+            self._saving_account_balance -= money
+
+    def deposit_saving_account_from_main_account(self, money):
+        pass
+
 
 #test:
 
